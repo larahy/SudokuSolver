@@ -25,5 +25,19 @@ describe Grid do
 
   end
 
+  context 'Neighbours' do
+
+    it 'should know other values in the row' do
+      expect(grid.row_neighbours_to(0, 0)).to eq([0, 1, 5, 0, 0, 3, 0, 0, 2])
+    end
+
+    it 'should know other values in the column' do
+      expect(grid.column_neighbours_to(0, 0)).to eq([0, 0, 2, 4, 5, 0, 9, 8, 0])
+    end
+
+    it 'should know the other values in the box' do
+      expect(grid.box_neighbours_to(0,0)).to eq([0, 1, 5, 0, 0, 0, 2, 7, 0])
+    end 
+  end
   
 end
