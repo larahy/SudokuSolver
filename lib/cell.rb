@@ -14,11 +14,15 @@ end
     (1..9).to_a - neighbours
   end
 
+  def solved?
+    !empty?
+  end
+
   def solve(neighbours)
     values = possible_values(neighbours)
     if possible_values(neighbours).length == 1
       self.value = values.first
     end
   end
-  
+
 end

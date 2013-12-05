@@ -57,6 +57,14 @@ describe Grid do
       expect(grid.solve_cell(cell, 0, 0)).to eq(6)
     end
 
+    it 'should be able to count unsolved cells' do
+      expect(grid.unsolved_cells.count).to eq(41)
+    end
+
+    it 'should return a finished sodoku' do
+      p grid.solve
+    end
+
   end
   
 end
