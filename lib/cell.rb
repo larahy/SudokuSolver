@@ -19,6 +19,6 @@ end
     if possible_values(neighbours).length == 1
       self.value = values.first
     end
-    #if this doesn't insert any values throughout the whole iteration when we need to break this loop
   end
+  
 end

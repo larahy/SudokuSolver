@@ -8,6 +8,10 @@ class Grid
     @grid = puzzle.chars.map {|x| Cell.new(x.to_i)}.each_slice(9).to_a
   end
 
+  # def solved?
+  #  !grid.flatten.include?(0)
+  # end
+
   def row_neighbours_to(row_index, column_index) 
     grid[row_index].map {|cell| cell.value}
   end
@@ -55,25 +59,34 @@ class Grid
     no_duplicates.sort  
   end
 
-  def solve
-    outstanding_before, looping = SIZE, false
-    while !solved? && !looping
-      try_to_solve # ask each cell to solve itself
-      outstanding         = @cells.count {|c| c.solved? }
-      looping             = outstanding_before == outstanding       
-      outstanding_before  = outstanding     
-    end
 
+  def solve
+    grid.each_with_index do |row,row_index|
+      row.each_with_index do |cell,column_index|
+        if cell.value = 0
+          solve_cell(cell,row_index,column_index)
+        end
+      end
+    end
+  # Loop over all cells until solved
+  # => MOVE ONTO NEXT CELL
+
+  #   end
+  end
+
+  def solve_cell(cell, row_index, column_index)
+      neighbours = all_neighbours_to(row_index, column_index)
+      cell.solve(neighbours) 
   end
 
   def solved?
-    #if no cells = 0 or nil
+   !grid.flatten.map {|cell| cell.value}.include?(0)
   end
 
   def inspect
-    #iterate over all cells and print the grid
-  end 
-
-
+    grid.each do |r|
+      puts r.map { |p| p }.join(" ")
+    end 
+  end
 
 end 

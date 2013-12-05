@@ -4,6 +4,7 @@ describe Grid do
 
   let (:puzzle) {'015003002000100906270068430490002017501040380003905000900081040860070025037204600'}
   let (:grid) {Grid.new(puzzle)}
+  let (:cell) {Cell.new}
   
   context 'Basic grid format' do 
 
@@ -41,6 +42,19 @@ describe Grid do
 
     it 'should sort and shorten neighbour values' do
       expect(grid.all_neighbours_to(0,0)).to eq([1,2,3,4,5,7,8,9])
+    end
+
+  end
+
+  context 'Solving puzzle' do
+
+    it 'should know when the puzzle is not solved' do
+      # grid.stub(:puzzle){'11111111111111111111111111111111111111'}
+      expect(grid.solved?).not_to be_true
+    end
+
+    it 'should tell a cell to solve itself' do
+      expect(grid.solve_cell(cell, 0, 0)).to eq(6)
     end
 
   end
