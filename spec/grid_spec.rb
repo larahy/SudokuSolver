@@ -38,6 +38,11 @@ describe Grid do
     it 'should know the other values in the box' do
       expect(grid.box_neighbours_to(0,0)).to eq([0, 1, 5, 0, 0, 0, 2, 7, 0])
     end 
+
+    it 'should sort and shorten neighbour values' do
+      expect(grid.all_neighbours_to(0,0)).to eq([1,2,3,4,5,7,8,9])
+    end
+
   end
   
 end

@@ -1,13 +1,13 @@
 class Cell
 
-def initialize(value = nil)
+def initialize(value = 0)
   @value = value 
 end
 
   attr_accessor :value
 
   def empty?
-    @value.nil?
+    @value == 0
   end
 
   def possible_values(neighbours)

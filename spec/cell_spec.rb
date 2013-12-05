@@ -4,8 +4,8 @@ require_relative '../lib/cell'
 
     let (:cell) {Cell.new}
 
-    it 'should be empty by default' do
-      expect(cell).to be_empty
+    it 'should be zero by default' do
+      expect(cell.value).to eq(0)
     end
 
     it 'should be able to have a value' do
@@ -29,7 +29,7 @@ require_relative '../lib/cell'
       it 'if there is more than one solution' do
         neighbours = [1,2,3,4]
         cell.solve(neighbours)
-        expect(cell.value).to be_nil
+        expect(cell.value).to eq(0)
       end
 
     end
